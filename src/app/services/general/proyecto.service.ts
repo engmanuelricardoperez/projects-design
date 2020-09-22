@@ -25,7 +25,7 @@ export class ProyectoService {
     const authorization = localStorage.getItem('Authorization');
     const httpOptions = new HttpHeaders().append('authorization', `${authorization}`);
     debugger;
-    const url = `http://34.74.8.228:8080/api/projects/`;
+    const url = `${environment.urlBaseServicio}/api/projects/`;
     // const url = `${this.urlBase}/proyects`;
     return this.httpClient.get<ProyectoModel[]>(url, { headers: httpOptions });
   }
@@ -40,7 +40,7 @@ export class ProyectoService {
     body.append('project_description', proyecto.descriptionProyect);
     body.append('project_price', proyecto.price);
 
-    const url = `http://34.74.8.228:8080/api/projects/`;
+    const url = `${environment.urlBaseServicio}/api/projects/`;
     // const url = `${this.urlBase}/crearProjects`;
     return this.httpClient.post<ProyectoModel>(url, body, { headers: httpOptions });
   }
@@ -54,7 +54,7 @@ debugger;
     body.append('project_name', proyecto.name);
     body.append('project_description', proyecto.descripccion);
     body.append('project_price', proyecto.precio);
-    const url = `http://34.74.8.228:8080/api/projects/${proyecto.id}/`;
+    const url = `${environment.urlBaseServicio}/api/projects/${proyecto.id}/`;
     return this.httpClient.put<ProyectoModel[]>(url, body, { headers: httpOptions });
 
 
@@ -65,7 +65,7 @@ debugger;
     debugger;
     const authorization = localStorage.getItem('Authorization');
     const httpOptions = new HttpHeaders().append('authorization', `${authorization}`);
-    const url = `http://34.74.8.228:8080/api/projects/${id}/`;
+    const url = `${environment.urlBaseServicio}/api/projects/${id}/`;
     // const url = `${this.urlBase}/users/${id}`;
     return this.httpClient.delete(url, { headers: httpOptions });
   }

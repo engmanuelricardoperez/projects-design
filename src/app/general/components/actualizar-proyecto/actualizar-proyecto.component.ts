@@ -54,7 +54,13 @@ export class ActualizarProyectoComponent implements OnInit {
       }, (error: HttpErrorResponse) => {
         console.error('error servicio' + error);
         console.log('mesaje error:' + error.message);
-        alert('Error en el servicio editar proyecto');
+        if (error.message.includes('404')) {
+          alert('Error en el servicio editar proyecto, no se puede editar ya que no pertenece a la empresa');
+        }       
+        else
+        {
+          alert('Error en el servicio editar proyecto');
+        }
       });
     this.cerrar();
   }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlBaseServicio : "http://localhost:3000"
+  urlBaseServicio : "http://34.74.8.228:8080"
 };
 
 /*

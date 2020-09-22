@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProyectoService } from '../../../services/general/proyecto.service';
-
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-eliminar-proyecto',
   templateUrl: './eliminar-proyecto.component.html',
@@ -26,6 +26,19 @@ export class EliminarProyectoComponent implements OnInit {
   borrarProyecto() {
     this.proyectoService
       .eliminarProyecto(this.proyectoSelecionado.id)
-      .subscribe((res) => {});
+      .subscribe((res) => {
+        debugger;
+        // this.usuarioSeleccionado = res;
+      }, (error: HttpErrorResponse) => {
+        console.error('error servicio' + error);
+        console.log('mesaje error:' + error.message);
+        if (error.message.includes('404')) {
+          alert('Error en el servicio eliminar proyecto, no se puede eliminar ya que no pertenece a la empresa');
+        }       
+        else
+        {
+          alert('Error en el servicio eliminar proyecto');
+        }
+      });
   }
 }

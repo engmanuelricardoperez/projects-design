@@ -20,7 +20,7 @@ export class LoginService {
     body.append('email', objCrear.email);
     body.append('password', objCrear.password);
     body.append('username', objCrear.username);
-    const url = `http://34.74.8.228:8080/api/token-auth/`;
+    const url = `${environment.urlBaseServicio}/api/token-auth/`;
     //const url = `http://localhost:3000/token-auth`;
     return this.http.post(url, body);
   }
@@ -36,7 +36,7 @@ export class LoginService {
 
     // const url = `${this.urlBase}/create-company`;
 
-    const url = `http://34.74.8.228:8080/api/create-company/`;
+    const url = `${environment.urlBaseServicio}/api/create-company/`;
     return this.http.post<LoginModel>(url, body);
   }
 
